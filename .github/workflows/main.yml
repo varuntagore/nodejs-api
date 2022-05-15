@@ -46,12 +46,12 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ronnytag/nodeapi:latest
+          tags: ronnytag/nodeapi:$GITHUB_RUN_NUMBER
       
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'ronnytag/nodeapi:latest'
+          image-ref: 'ronnytag/nodeapi:$GITHUB_RUN_NUMBER'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
